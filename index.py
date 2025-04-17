@@ -9,7 +9,7 @@ def select_level() -> dict:
     game_modes = [
         {"level": "easy", "num_attempts": 15, "num_range": [1, 30]},
         {"level": "medium", "num_attempts": 10, "num_range": [1, 50]},
-        {"level": "hard", "num_attempts": 5, "num_range": [1, 100]}
+        {"level": "hard", "num_attempts": 7, "num_range": [1, 100]}
     ]
     levels = [mode["level"] for mode in game_modes]
     
@@ -29,7 +29,7 @@ def guess_number(mode: dict):
     attempt = 0
     random_number = get_random_number(mode["num_range"][0], mode["num_range"][1])
     
-    while True:
+    while attempt <= mode["num_attempts"]:
         user_choice = int(input(f"Pick a number between {mode["num_range"][0]} and {mode["num_range"][1]}: "))
         attempt += 1
         if (user_choice > random_number) and (attempt < mode["num_attempts"]):
